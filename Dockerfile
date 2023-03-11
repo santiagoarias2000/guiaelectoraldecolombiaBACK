@@ -11,6 +11,8 @@ COPY package*.json ./
 
 # Instala las dependencias
 RUN npm install -g npm@latest
+RUN npm install -g typescript
+RUN tsc
 RUN npm i
 RUN npm run build
 RUN npm run dev
