@@ -1,0 +1,8 @@
+{
+    "pkgs": [
+      "nodejs-18_x",
+      "npm_8_x",
+      "typescript"
+    ]
+  }
+  
