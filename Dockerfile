@@ -11,6 +11,8 @@ COPY package*.json ./
 RUN npm install -g npm@latest
 RUN npm install -g typescript
 RUN npm i
-RUN npm run build
+RUN npm run dev
+
+COPY buils ./
 
 
