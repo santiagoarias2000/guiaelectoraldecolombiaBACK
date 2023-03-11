@@ -13,4 +13,4 @@ RUN npm install -g typescript
 RUN npm i
 RUN npm run build
 
-COPY build/ .
+COPY build /
