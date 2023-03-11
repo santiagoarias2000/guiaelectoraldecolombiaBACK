@@ -13,6 +13,6 @@ RUN npm install -g typescript
 RUN npm i
 RUN npm run dev
 
-COPY buils ./
+COPY build ./
 
 
