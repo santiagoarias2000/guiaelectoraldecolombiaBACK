@@ -1,7 +1,7 @@
 
 
 # Selecciona la imagen base de Node.js 18
-FROM node:18
+FROM node:18_x  
 
 # Establece el directorio de trabajo
 WORKDIR /build/index.js
@@ -16,8 +16,3 @@ RUN npm i
 RUN npm run build
 RUN npm run dev
 
-# Expone el puerto 3000
-EXPOSE 443
-
-# Inicia la aplicación
-CMD [ "npm", "start" ]
