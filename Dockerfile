@@ -1,7 +1,7 @@
 
 
 # Selecciona la imagen base de Node.js 18
-FROM node:18_x  
+FROM node:18
 
 # Establece el directorio de trabajo
 WORKDIR /build/index.js
@@ -11,8 +11,6 @@ COPY package*.json ./
 
 # Instala las dependencias
 RUN npm install -g npm@latest
-RUN npm install typescript -g
 RUN npm i
 RUN npm run build
 RUN npm run dev
-
