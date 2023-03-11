@@ -5,7 +5,7 @@ FROM node:18
 
 # Copia el archivo package.json y package-lock.json a la imagen
 COPY package*.json ./
-COPY build /
+COPY build/ .
 
 # Instala las dependencias
 RUN npm install -g npm@latest
