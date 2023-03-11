@@ -11,7 +11,6 @@ COPY package*.json ./
 RUN npm install -g npm@latest
 RUN npm install -g typescript
 RUN npm i
-RUN npm run dev
 
 CMD [ "npm", "start" ]
 
