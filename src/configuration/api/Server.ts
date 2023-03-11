@@ -50,7 +50,7 @@ class Server {
 
   public start(): void {
     const options = {
-      key: fs.readFileSync("private.key"),
+      key: fs.readFileSync("server.key"),
       cert: fs.readFileSync("server.crt"),
     };
 
