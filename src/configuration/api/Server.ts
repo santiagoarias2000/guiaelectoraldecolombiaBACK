@@ -9,7 +9,7 @@ import municipioRoute from "../../routes/MunicipioRoute";
 import departamentoRoute from "../../routes/DepartamentoRoute";
 var fs = require("fs");
 var https = require("https");
-
+const helmet = require("helmet");
 
 class Server {
   public app: express.Application;
@@ -20,11 +20,25 @@ class Server {
     this.activeRoute();
   }
   public startSetting(): void {
+    const corsOptions = {
+      origin: "https://localhost", // Reemplazar con el dominio permitido
+      optionsSuccessStatus: 200, // Algunos navegadores antiguos (IE11, varios Smart TV) no entienden 204
+    };
     this.app.set("PORT", 443);
-    this.app.use(cors());
+    this.app.use(cors(corsOptions));
     this.app.use(morgan("dev"));
     this.app.use(express.json({ limit: "100mb" }));
     this.app.use(express.urlencoded({ extended: true }));
+    const csp = `
+  default-src 'self' https://localhost;
+`;
+    this.app.use(
+      helmet.contentSecurityPolicy({
+        directives: {
+          defaultSrc: ["'self'", "https://localhost"],
+        },
+      })
+    );
   }
   public activeRoute(): void {
     this.app.use("/api/public/camara", camaraRoute);
@@ -36,8 +50,8 @@ class Server {
 
   public start(): void {
     const options = {
-        key: fs.readFileSync('private.key'),
-        cert: fs.readFileSync('server.crt')
+      key: fs.readFileSync("private.key"),
+      cert: fs.readFileSync("server.crt"),
     };
 
     const server = https.createServer(options, this.app);
