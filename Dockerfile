@@ -1,5 +1,3 @@
-
-
 # Selecciona la imagen base de Node.js 18
 FROM node:18
 
